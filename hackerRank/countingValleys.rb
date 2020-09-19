@@ -1,12 +1,32 @@
-# path = "UDDDUDUU"
-path = "DDUUDDUDUUUD"
+def countingValleys(path)
+  path = path.chars
+  # puts "path: #{path}"
 
-path = path.downcase.chars
+  values = []
+  path.each do |char|
+    char == "U" ? values << 1 : values << -1
+  end
+  # puts "values: #{values}"
 
-p path
+  sum = 0
+  array_sum = []
+  values.each_with_index do |value, index|
+    # print "value: #{value},  index -> #{index}, sum: #{sum = sum + value} "
+    sum = sum + value
+    array_sum << sum
+    # print "\n"
+  end
+  # puts "array_sum: #{array_sum}"
 
-values = []
-path.each do |char|
-  char == "u" ? values << 1 : values << -1
+  valleys = 0
+  array_sum.each_with_index do |element, index|
+    if element == 0 && array_sum[index - 1] == -1
+      valleys += 1
+    end
+  end
+  puts "valleys: #{valleys}"
+  valleys
 end
-p values
+
+path = "DDUUDDUU"
+countingValleys(path)
