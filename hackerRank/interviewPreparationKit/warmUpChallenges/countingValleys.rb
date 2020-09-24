@@ -1,22 +1,17 @@
 def countingValleys(path)
-  path = path.chars
-  # puts "path: #{path}"
+  p path = path.chars
 
   values = []
   path.each do |char|
     char == "U" ? values << 1 : values << -1
   end
-  # puts "values: #{values}"
 
   sum = 0
   array_sum = []
-  values.each_with_index do |value, index|
-    # print "value: #{value},  index -> #{index}, sum: #{sum = sum + value} "
+  values.each do |value|
     sum = sum + value
     array_sum << sum
-    # print "\n"
   end
-  # puts "array_sum: #{array_sum}"
 
   valleys = 0
   array_sum.each_with_index do |element, index|
